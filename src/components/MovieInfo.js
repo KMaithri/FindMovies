@@ -39,23 +39,24 @@ const MovieInfo = () => {
                 <div>
                     <h1 className="font-bold text-2xl">{info.Title}</h1>
                     <p className="font-bold">{info.Released}</p>
-                    {info.Runtime && <p className="font-bold">{info.Runtime}</p> }
+                    {info.Runtime !== "N/A" && <p className="font-bold">{info.Runtime}</p> }
                 </div>
                 <div>
-                    <p className="font-bold">{info.imdbRating}</p>
+                    {info.imdbRating !== "N/A" && <p className="font-bold">{info.imdbRating}</p>}
                 </div>
 
             </div>
             
-            {info.Poster && <img src={info.Poster} className="rounded-lg my-10 h-auto w-auto mx-auto shadow-2xl"></img>}
-            {info.Plot && <p className="border-b border-black py-4">{info.Plot}</p>}
-            {info.Type && <h3 className="border-b border-black py-4"><strong>Type: </strong> {info.Type}</h3>}
-            {info.Actors && <h3 className="border-b border-black py-4"><strong>Actors:</strong> {info.Actors}</h3>}
-            {info.Writer && <h3 className="border-b border-black py-4"><strong>Writer:</strong> {info.Writer}</h3>}
-            {info.Director && <h3 className="border-b border-black py-4"><strong>Director:</strong> {info.Director}</h3>}
-            {info.totalSeasons && <h3 className="border-b border-black py-4"><strong>Seasons:</strong> {info.totalSeasons}</h3>}
-            {info.Genre && <h3 className="border-b border-black py-4"><strong>Genre:</strong> {info.Genre}</h3>}
-            {info.Language && <h3 className="py-4"><strong>Language:</strong> {info.Language}</h3>}
+            {info.Poster !== "Not Found" && <img src={info.Poster} className="rounded-lg my-10 h-auto w-auto mx-auto shadow-2xl"></img>}
+            {console.log(info.Poster)}
+            {info.Plot !== "N/A" && <p className="border-b border-black py-4">{info.Plot}</p>}
+            {info.Type !== "N/A" && <h3 className="border-b border-black py-4"><strong>Type: </strong> {info.Type}</h3>}
+            {info.Actors !== "N/A" && <h3 className="border-b border-black py-4"><strong>Actors:</strong> {info.Actors}</h3>}
+            {info.Writer !== "N/A" && <h3 className="border-b border-black py-4"><strong>Writer:</strong> {info.Writer}</h3>}
+            {info.Director !== "N/A" && <h3 className="border-b border-black py-4"><strong>Director:</strong> {info.Director}</h3>}
+            {info.Type !== "movie" ? (info.totalSeasons !== "N/A" && <h3 className="border-b border-black py-4"><strong>Seasons:</strong> {info.totalSeasons}</h3>):""}
+            {info.Genre !== "N/A" && <h3 className="border-b border-black py-4"><strong>Genre:</strong> {info.Genre}</h3>}
+            {info.Language !== "N/A" && <h3 className="py-4"><strong>Language:</strong> {info.Language}</h3>}
             {((check == false) && (info.Title)) ? <button className="bg-black text-white font-bold px-4 py-2 rounded-full cursor-pointer" onClick={() => {handleAddItem(info)}}>➕</button> : <button className="bg-black text-white font-bold px-4 py-2 rounded-full cursor-pointer" onClick={() => {handleRemoveItem(info.imdbID)}}>✔️</button>}
             {/* {(info.Title) && <button className="my-4 bg-black text-white font-bold p-3 cursor-pointer" onClick={() => {handleAddItem(info)}}>Add to Favourites</button>} */}
         </div>
